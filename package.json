@@ -1,9 +1,6 @@
 {
   "name": "product-overview-widget",
   "version": "1.0.0",
-  "bin": {
-    "cypress-runner": "./runner.mjs"
-  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",

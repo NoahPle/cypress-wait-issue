@@ -11,11 +11,14 @@ import { createServer } from 'vite'
 const mode = process.argv[2] || 'run'
 const startTime = performance.now()
 
-const server = await createServer({
+let server
+
+server = await createServer({
   root: './'
 })
 
 await server.listen()
+
 let exitCode = 0
 
 try {
