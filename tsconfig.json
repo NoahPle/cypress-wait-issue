@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "strict": true,
+    "noImplicitAny": false,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "types": ["cypress", "node"],
+    "jsx": "react-jsx",
+    "lib": ["dom", "es2022"],
+  },
+  "include": [
+    "src/**/*",
+  ]
+}
