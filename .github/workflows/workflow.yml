@@ -25,8 +25,20 @@ jobs:
           node-version: 24
           cache: "pnpm"
 
+      # 3. Cache Cypress binary
+      - uses: actions/cache@v3
+        with:
+          path: ~/.cache/Cypress
+          key: ${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-cypress-
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      # 5. Install Cypress binary (if cache missed)
+      - name: Install Cypress binary
+        run: pnpm exec cypress install
 
       - name: Build
         run: pnpm build
