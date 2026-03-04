@@ -1,4 +1,6 @@
 import { useState } from "react";
+import randomJson from './random.json'
+
 
 export default function App() {
   const [value1, setValue1] = useState('')
@@ -15,7 +17,8 @@ export default function App() {
       body: JSON.stringify({
         value1,
         value2,
-        value3
+        value3,
+        payload: randomJson
       })
     });
   }

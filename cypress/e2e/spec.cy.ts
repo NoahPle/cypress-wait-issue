@@ -1,3 +1,5 @@
+import randomJson from '../results/random.json'
+
 describe('Some random test', () => {
   beforeEach('setup mocks', () => {
     cy.intercept("POST", "/api/postEndpoint", (req) => {
@@ -12,7 +14,7 @@ describe('Some random test', () => {
     cy.get('[name="input3"]').type("third value")
     cy.get('[role="button"]').click()
 
-    cy.wait('@postEndpoint',).its('request.body').should('eql', {"value1":"first value","value2":"second value","value3":"third value"})
+    cy.wait('@postEndpoint',).its('request.body').should('eql', {"value1":"first value","value2":"second value","value3":"third value", payload: randomJson})
 
   })
 })
