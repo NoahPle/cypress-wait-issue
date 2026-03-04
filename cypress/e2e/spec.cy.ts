@@ -1,4 +1,4 @@
-import randomJson from '../results/random.json'
+import randomJson from '../results/huge_random.json'
 
 describe('Some random test', () => {
   beforeEach('setup mocks', () => {

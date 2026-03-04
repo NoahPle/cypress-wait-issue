@@ -1,5 +1,5 @@
 import { useState } from "react";
-import randomJson from './random.json'
+import randomJson from './huge_random.json'
 
 
 export default function App() {
