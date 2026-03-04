@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
 import cypress from 'cypress'
-import { createServer } from 'vite'
+import { preview } from 'vite'
 
 /**
  * Run or open Cypress tests.
@@ -11,13 +11,11 @@ import { createServer } from 'vite'
 const mode = process.argv[2] || 'run'
 const startTime = performance.now()
 
-let server
-
-server = await createServer({
-  root: './'
+const server = await preview({
+  preview: { port: 4173 }
 })
 
-await server.listen()
+const baseUrl = 'http://localhost:4173'
 
 let exitCode = 0
 
@@ -25,7 +23,7 @@ try {
   if (mode === 'open') {
     await cypress.open({
       config: {
-        baseUrl: server?.resolvedUrls.local[0]
+        baseUrl
       },
       testingType: 'e2e',
       browser: 'electron'
@@ -35,7 +33,7 @@ try {
       quiet: false,
       reporter: 'list',
       config: {
-        baseUrl: server?.resolvedUrls.local[0],
+        baseUrl,
         screenshotOnRunFailure: false
       },
       browser: 'electron',
